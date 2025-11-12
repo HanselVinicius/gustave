@@ -1,0 +1,58 @@
+# =========================
+# Node.js + TypeScript
+# =========================
+
+node_modules/
+
+# Build output
+dist/
+build/
+out/
+tmp/
+temp/
+
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+.cache/
+coverage/
+*.tsbuildinfo
+
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+.DS_Store
+ehthumbs.db
+Icon?
+Desktop.ini
+
+jest-test-results.json
+coverage-final.json
+
+*.tgz
+*.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+.docker/
+docker-compose.override.yml
+
+*.pid
+*.seed
+*.pid.lock
