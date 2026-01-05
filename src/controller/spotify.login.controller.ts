@@ -1,12 +1,9 @@
-import type { Express, Request, Response } from "express";
+import type { Request, Response } from "express";
 import { SpotifyLoginService } from "../service/spotify.login.service.js";
 import { SpotifyCallbackService } from "../service/spotify.callback.service.js";
 import { CallbackDto } from "../service/spotify.callback.dto.js";
 
 export default class SpotifyLoginController {
-
-
-  
 
     public login(_req: Request, res: Response) {
         const spotifyLoginService = new SpotifyLoginService();
