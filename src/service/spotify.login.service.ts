@@ -6,6 +6,11 @@ export class SpotifyLoginService {
             "playlist-read-private",
             "playlist-modify-public",
             "playlist-modify-private",
+            "user-library-read",
+            "user-read-currently-playing",
+            "user-read-recently-played",
+            "user-top-read",
+            "user-library-modify"
         ].join(" ");
 
         const clientId = process.env.SPOTIFY_CLIENT_ID as string;

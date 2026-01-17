@@ -22,7 +22,11 @@ export default class SpotifyLoginController {
             res.status(200).send(result);
 
         } catch (err: any) {
-            res.status(400).send(err.message);
+            res.status(400).send({
+                error: {
+                    message: err.message
+                }
+            });
         }
     }
 }

@@ -1,12 +1,13 @@
 import axios from "axios";
 import type { CallbackDto } from "./spotify.callback.dto.js";
+import { AppResponse } from "../domain/AppResponse.js";
 
 export class SpotifyCallbackService {
 
-    public async callback(callbackDto: CallbackDto): Promise<{
+    public async callback(callbackDto: CallbackDto): Promise<AppResponse<{
         access_token: string;
         refresh_token: string;
-    }> {
+    }>> {
         if (!callbackDto.code) {
             throw new Error("code");
         }
@@ -33,10 +34,21 @@ export class SpotifyCallbackService {
             }
         );
 
-        return tokenResponse.data as {
+        const response: AppResponse<{
             access_token: string;
             refresh_token: string;
-        };
+        }> = AppResponse.build(tokenResponse.data as {
+            access_token: string;
+            refresh_token: string;
+        },
+            {
+                _links: {
+                    next: { href: "/spotify/songs" }
+                }
+            }
+        )
+
+        return response
     }
 
 }
