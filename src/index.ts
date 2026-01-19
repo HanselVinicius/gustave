@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import SpotifyLoginRoutes from "./routes/spotify.login.routes.js";
 import { SpotifySongRoutes } from "./routes/spotify.song.routes.js";
 import type { Route } from "./routes/abs/route.js";
+import { Middlewares } from "./infra/middlewares.js";
 
 dotenv.config();
 
@@ -19,9 +20,15 @@ app.get("/health", (req,res) =>{
 })
 
 app.listen(port, () => {
+  try{
   const routes: Route[] = [
     new SpotifyLoginRoutes(app),
     new SpotifySongRoutes(app)
   ]
-  routes.forEach(route => route.registerRoutes())
+  routes.forEach(route => route.registerRoutes());
+  const middlewares = new Middlewares(app);
+  middlewares.registerMiddlewares();
+  }catch(err){
+    console.error(`error : ${err}`)
+  }
 });

@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { SpotifyCommunicationMeta } from "../domain/SpotifyCommunicationMeta.js";
 
-export class SpotifyDeleteCommand {
+export class SpotifyDeleteCommandService {
 
     constructor(public spotifyCommunicationMeta: SpotifyCommunicationMeta) { }
 

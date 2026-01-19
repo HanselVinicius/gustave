@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { CallbackDto } from "./spotify.callback.dto.js";
+import type { CallbackDto } from "./dto/spotify.callback.dto.js";
 import { AppResponse } from "../domain/AppResponse.js";
 
 export class SpotifyCallbackService {

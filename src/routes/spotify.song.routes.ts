@@ -1,6 +1,6 @@
 import type { Express } from "express";
 import type { Route } from "./abs/route.js";
-import { SpotifySongController } from "../controller/spotify.song.controller.js";
+import { SpotifySongController } from "../controller/song/spotify.song.controller.js";
 
 export class SpotifySongRoutes implements Route {
 
@@ -9,6 +9,7 @@ export class SpotifySongRoutes implements Route {
     public registerRoutes(): void {
         const controller = new SpotifySongController();
         this.app.delete("/spotify/song/:songId",controller.delete);
+        this.app.get("/spotify/song",controller.list)
     }
 
 }
