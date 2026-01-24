@@ -43,7 +43,7 @@ export class SpotifyCallbackService {
         },
             {
                 _links: {
-                    next: { href: "/spotify/songs" }
+                    "ea:songs": { href: "/spotify/songs" }
                 }
             }
         )

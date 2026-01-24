@@ -1,5 +1,6 @@
 import { errors } from "@vinejs/vine";
-import type { Express, NextFunction,Request,Response } from "express";
+import { AxiosError } from "axios";
+import type { Express, NextFunction, Request, Response } from "express";
 
 export class Middlewares {
 
@@ -19,6 +20,11 @@ export class Middlewares {
             return res.status(422).json({
                 errors: err.messages
             });
+        }
+        if (err instanceof AxiosError) {
+            console.error(`AXIOS ERROR > ${err}`)
+
+            return res.status(err.status!).json();
         }
         console.error(`unknown error > ${err}`)
         return res.status(500).json({

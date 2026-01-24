@@ -8,7 +8,7 @@ export class SpotifySongRoutes implements Route {
 
     public registerRoutes(): void {
         const controller = new SpotifySongController();
-        this.app.delete("/spotify/song/:songId",controller.delete);
+        this.app.delete("/spotify/song",controller.delete);
         this.app.get("/spotify/song",controller.list)
     }
 

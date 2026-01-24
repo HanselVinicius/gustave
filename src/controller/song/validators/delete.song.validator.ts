@@ -1,14 +1,19 @@
 import vine from "@vinejs/vine";
+import { authorizationGlobalVine } from "./utils/authorization.global.js";
 
 export function deleteSongValidator() {
     return vine.object({
-        songId: vine.
+        songParamId: vine.
             string()
             .trim()
-            .minLength(1),
-        authorization: vine
-            .string()
-            .trim()
-            .minLength(1)
-    })
+            .optional().requiredIfAnyMissing(['songBodyIds']),
+        songBodyIds: vine
+            .array(vine.object({
+                songId: vine
+                    .string()
+                    .trim()
+            }))
+            .optional().requiredIfAnyMissing(['songParamId']),
+        authorization: authorizationGlobalVine
+    });
 }
